@@ -2,7 +2,7 @@ package com.getuikit.gwt.client.js;
 
 import com.getuikit.gwt.client.JQuery;
 import com.getuikit.gwt.client.UIKit;
-import com.getuikit.gwt.client.resources.js.JavascriptResources;
+import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.junit.client.GWTTestCase;
@@ -21,18 +21,17 @@ public class JavascriptResourcesTest extends GWTTestCase {
     }
 
     public void testScriptInjectJQuery(){
-        new FromString(JavascriptResources.INSTANCE.jqueryJS().getText())
-                .setWindow(ScriptInjector.TOP_WINDOW)
-                .inject();
-    }
+        ScriptInjector.fromUrl("js/jquery-2.1.3.min.js").setCallback(new Callback<Void, Exception>() {
+            @Override
+            public void onFailure(Exception e) {
 
-    public void testScriptInjectUIKit(){
-        JQuery jquery = GWT.create(JQuery.class);
-        jquery.load();
-        new FromString(JavascriptResources.INSTANCE.uikitJS().getText())
-                .setWindow(ScriptInjector.TOP_WINDOW)
-                .inject();
-    }
+            }
 
+            @Override
+            public void onSuccess(Void aVoid) {
+
+            }
+        }).inject();
+    }
 
 }

@@ -19,7 +19,6 @@ public class ComponentsTest extends GWTTestCase {
     public void testNotifyComponent(){
         JQuery jquery = GWT.create(JQuery.class);
         jquery.load();
-        UIKit.init(UIKit.STYLE.ALMOST_FLAT);
         UIKit.notification("test", UIKit.STATUS.SUCCESS, 1, UIKit.POSITION.TOP_RIGHT);
     }
 }

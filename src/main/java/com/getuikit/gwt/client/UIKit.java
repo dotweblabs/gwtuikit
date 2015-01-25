@@ -16,8 +16,6 @@
  */
 package com.getuikit.gwt.client;
 
-import com.getuikit.gwt.client.resources.css.CssResources;
-import com.getuikit.gwt.client.resources.js.JavascriptResources;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.StyleInjector;
@@ -28,7 +26,6 @@ import com.google.gwt.dom.client.StyleInjector;
  */
 public class UIKit {
 
-    public static enum STYLE {BASIC, ALMOST_FLAT, GRADIENT};
     public static enum STATUS {INFO("info"), SUCCESS("success"), WARNING("warning"), DANGER("danger");
         private String status = null;
         private STATUS(String status){
@@ -55,41 +52,6 @@ public class UIKit {
         }
     };
 
-    private static STYLE activetStyle;
-
-    private static boolean hasInit = false;
-
-    public static void init(){
-        init(STYLE.BASIC);
-    }
-
-    public static void init(STYLE style){
-        if(style.equals(STYLE.BASIC)){
-            StyleInjector.inject(CssResources.INSTANCE.uikitCSS().getText());
-        }else if(style.equals(STYLE.ALMOST_FLAT)){
-            StyleInjector.inject(CssResources.INSTANCE.uikitAlmostFlatCSS().getText());
-        }else if(style.equals(STYLE.GRADIENT)){
-            StyleInjector.inject(CssResources.INSTANCE.uikitGradientCSS().getText());
-        }
-        ScriptInjector.fromString(JavascriptResources.INSTANCE.uikitJS().getText())
-                .setWindow(ScriptInjector.TOP_WINDOW)
-                .inject();
-        activetStyle = style;
-        hasInit = true;
-    }
-
-    public static void setActiveStyle(STYLE style){
-        activetStyle = style;
-    }
-
-    public static boolean hasInit() {
-        return hasInit;
-    }
-
-    public static STYLE getActivetStyle() {
-        return activetStyle;
-    }
-
     public static String getVersion(){
         return uikitVersion();
     }
@@ -99,7 +61,6 @@ public class UIKit {
     }-*/;
 
     public static void notification(String message, STATUS status, int timeout, POSITION pos){
-        Components.injectNotify();
         _notify(message, status.name(), timeout, pos.name());
     }
 

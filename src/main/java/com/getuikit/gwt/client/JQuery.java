@@ -19,7 +19,7 @@ package com.getuikit.gwt.client;
 import com.google.gwt.query.client.builders.JsniBundle;
 
 public interface JQuery extends JsniBundle {
-    @LibrarySource("https://code.jquery.com/jquery-2.1.3.min.js")
-//    @LibrarySource("js/jquery-1.11.2.js")
+//    @LibrarySource("https://code.jquery.com/jquery-2.1.3.min.js")
+    @LibrarySource("js/jquery-2.1.3.min.js")
     public void load();
 }

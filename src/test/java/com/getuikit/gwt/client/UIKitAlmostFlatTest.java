@@ -44,15 +44,12 @@ public class UIKitAlmostFlatTest extends GWTTestCase {
 	public void testGetVersion(){
 		JQuery jquery = GWT.create(JQuery.class);
 		jquery.load();
-		UIKit.init(UIKit.STYLE.ALMOST_FLAT);
 		assertEquals("2.16.2", UIKit.getVersion());
 	}
 
 	public void testComponentsFormPassword(){
 		JQuery jquery = GWT.create(JQuery.class);
 		jquery.load();
-		UIKit.init(UIKit.STYLE.ALMOST_FLAT);
-		Components.injectFormPassword();
 	}
 
 }
