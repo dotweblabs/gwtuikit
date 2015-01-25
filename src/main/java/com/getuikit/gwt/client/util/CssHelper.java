@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class CssHelper {
 
-    private static Map<String, LinkElement> styles = new LinkedHashMap<>();
+    private static Map<String, LinkElement> styles = new LinkedHashMap<String, LinkElement>();
 
     /** Load CSS file from url */
     public static void loadCss(String url){
