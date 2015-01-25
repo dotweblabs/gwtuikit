@@ -22,7 +22,7 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface JavascriptResources extends ClientBundle {
     public static final JavascriptResources INSTANCE = GWT.create(JavascriptResources.class);
-    @Source("jquery-1.11.2.js")
+    @Source("jquery-2.1.3.min.js")
     TextResource jqueryJS();
     @Source("uikit.js")
     TextResource uikitJS();
