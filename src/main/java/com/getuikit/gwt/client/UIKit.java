@@ -78,6 +78,10 @@ public class UIKit {
         hasInit = true;
     }
 
+    public static void setActiveStyle(STYLE style){
+        activetStyle = style;
+    }
+
     public static boolean hasInit() {
         return hasInit;
     }
@@ -100,7 +104,7 @@ public class UIKit {
     }
 
     private static native void _notify(String _message, String _status, int _timeout, String _pos)/*-{
-        return $wnd.UIkit.notify({
+        $wnd.UIkit.notify({
                         message : _message,
                         status  : _status,
                         timeout : _timeout,
