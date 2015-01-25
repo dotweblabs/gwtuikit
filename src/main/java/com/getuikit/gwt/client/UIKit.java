@@ -17,11 +17,7 @@
 package com.getuikit.gwt.client;
 
 import com.getuikit.gwt.client.resources.css.CssResources;
-import com.getuikit.gwt.client.resources.css.components.ComponentsCssResources;
 import com.getuikit.gwt.client.resources.js.JavascriptResources;
-import com.getuikit.gwt.client.util.CssHelper;
-import com.google.gwt.core.client.Callback;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.StyleInjector;
 
@@ -32,6 +28,31 @@ import com.google.gwt.dom.client.StyleInjector;
 public class UIKit {
 
     public static enum STYLE {BASIC, ALMOST_FLAT, GRADIENT};
+    public static enum STATUS {INFO("info"), SUCCESS("success"), WARNING("warning"), DANGER("danger");
+        private String status = null;
+        private STATUS(String status){
+            this.status = status;
+        }
+        public boolean equalsName(String otherName){
+            return (otherName == null)? false : status.equals(otherName);
+        }
+        public String toString(){
+            return status;
+        }
+    }
+    public static enum POSITION { TOP_CENTER("top-center"), TOP_LEFT("top-left"), TOP_RIGHT("top-right"),
+        BOTTOM_CENTER("bottom-center"), BOTTOM_LEFT("bottom-left"), BOTTOM_RIGHT("bottom-right");
+        private String pos = null;
+        private POSITION(String pos){
+            this.pos = pos;
+        }
+        public boolean equalsName(String otherName){
+            return (otherName == null)? false : pos.equals(otherName);
+        }
+        public String toString(){
+            return pos;
+        }
+    };
 
     private static STYLE activetStyle;
 
@@ -49,8 +70,11 @@ public class UIKit {
         }else if(style.equals(STYLE.GRADIENT)){
             StyleInjector.inject(CssResources.INSTANCE.uikitGradientCSS().getText());
         }
-        JQuery jquery = GWT.create(JQuery.class);
-        jquery.load();
+//        JQuery jquery = GWT.create(JQuery.class);
+//        jquery.load();
+        ScriptInjector.fromString(JavascriptResources.INSTANCE.jqueryJS().getText())
+                .setWindow(ScriptInjector.TOP_WINDOW)
+                .inject();
         ScriptInjector.fromString(JavascriptResources.INSTANCE.uikitJS().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW)
                 .inject();
@@ -69,8 +93,22 @@ public class UIKit {
     public static String getVersion(){
         return uikitVersion();
     }
+
     public static native String uikitVersion()/*-{
         return $wnd.UIkit.version;
+    }-*/;
+
+    public static void notification(String message, STATUS status, int timeout, POSITION pos){
+        _notify(message, status.name(), timeout, pos.name());
+    }
+
+    private static native void _notify(String _message, String _status, int _timeout, String _pos)/*-{
+        return $wnd.UIkit.notify({
+                        message : _message,
+                        status  : _status,
+                        timeout : _timeout,
+                        pos     : _pos
+                    });
     }-*/;
 
 }
