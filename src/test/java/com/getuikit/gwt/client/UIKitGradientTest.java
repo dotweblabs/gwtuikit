@@ -47,7 +47,7 @@ public class UIKitGradientTest extends GWTTestCase {
 
 	public void testComponentsFormPassword(){
 		UIKit.init(UIKit.STYLE.GRADIENT);
-		Components.formPassword();
+		Components.injectFormPassword();
 	}
 
 }

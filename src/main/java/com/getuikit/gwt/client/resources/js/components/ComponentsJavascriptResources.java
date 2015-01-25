@@ -24,4 +24,6 @@ public interface ComponentsJavascriptResources extends ClientBundle {
     public static final ComponentsJavascriptResources INSTANCE = GWT.create(ComponentsJavascriptResources.class);
     @Source("form-password.js")
     TextResource formPasswordJS();
+    @Source("notify.js")
+    TextResource notifyJS();
 }

@@ -46,7 +46,7 @@ public class UIKitAlmostFlatTest extends GWTTestCase {
 	}
 
 	public void testComponentsFormPassword(){
-		Components.formPassword();
+		Components.injectFormPassword();
 	}
 
 }

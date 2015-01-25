@@ -28,4 +28,10 @@ public interface ComponentsCssResources extends ClientBundle {
     TextResource formPasswordAlmostFlat();
     @Source("form-password.gradient.css")
     TextResource formPasswordGradient();
+    @Source("notify.css")
+    TextResource notifyBasic();
+    @Source("notify.almost-flat.css")
+    TextResource notifyAlmostFlat();
+    @Source("notify.gradient.css")
+    TextResource notifyGradient();
 }

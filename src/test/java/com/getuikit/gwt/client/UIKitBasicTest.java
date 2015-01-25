@@ -45,7 +45,7 @@ public class UIKitBasicTest extends GWTTestCase {
 	}
 
 	public void testComponentsFormPassword(){
-		Components.formPassword();
+		Components.injectFormPassword();
 	}
 
 }

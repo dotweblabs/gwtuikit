@@ -99,6 +99,7 @@ public class UIKit {
     }-*/;
 
     public static void notification(String message, STATUS status, int timeout, POSITION pos){
+        Components.injectNotify();
         _notify(message, status.name(), timeout, pos.name());
     }
 
