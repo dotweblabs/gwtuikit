@@ -18,6 +18,7 @@ package com.getuikit.gwt.client;
 
 import com.getuikit.gwt.client.resources.css.CssResources;
 import com.getuikit.gwt.client.resources.js.JavascriptResources;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.StyleInjector;
 
@@ -70,11 +71,11 @@ public class UIKit {
         }else if(style.equals(STYLE.GRADIENT)){
             StyleInjector.inject(CssResources.INSTANCE.uikitGradientCSS().getText());
         }
-//        JQuery jquery = GWT.create(JQuery.class);
-//        jquery.load();
-        ScriptInjector.fromString(JavascriptResources.INSTANCE.jqueryJS().getText())
-                .setWindow(ScriptInjector.TOP_WINDOW)
-                .inject();
+        JQuery jquery = GWT.create(JQuery.class);
+        jquery.load();
+//        ScriptInjector.fromString(JavascriptResources.INSTANCE.jqueryJS().getText())
+//                .setWindow(ScriptInjector.TOP_WINDOW)
+//                .inject();
         ScriptInjector.fromString(JavascriptResources.INSTANCE.uikitJS().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW)
                 .inject();
