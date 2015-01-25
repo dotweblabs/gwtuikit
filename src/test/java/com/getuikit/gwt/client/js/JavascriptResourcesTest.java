@@ -27,9 +27,6 @@ public class JavascriptResourcesTest extends GWTTestCase {
     }
 
     public void testScriptInjectUIKit(){
-//        new FromString(JavascriptResources.INSTANCE.jqueryJS().getText())
-//                .setWindow(ScriptInjector.TOP_WINDOW)
-//                .inject();
         JQuery jquery = GWT.create(JQuery.class);
         jquery.load();
         new FromString(JavascriptResources.INSTANCE.uikitJS().getText())

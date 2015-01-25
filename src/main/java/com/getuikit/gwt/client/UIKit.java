@@ -71,11 +71,6 @@ public class UIKit {
         }else if(style.equals(STYLE.GRADIENT)){
             StyleInjector.inject(CssResources.INSTANCE.uikitGradientCSS().getText());
         }
-        JQuery jquery = GWT.create(JQuery.class);
-        jquery.load();
-//        ScriptInjector.fromString(JavascriptResources.INSTANCE.jqueryJS().getText())
-//                .setWindow(ScriptInjector.TOP_WINDOW)
-//                .inject();
         ScriptInjector.fromString(JavascriptResources.INSTANCE.uikitJS().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW)
                 .inject();

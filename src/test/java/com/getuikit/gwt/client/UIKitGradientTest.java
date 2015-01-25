@@ -16,6 +16,7 @@
  */
 package com.getuikit.gwt.client;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -35,17 +36,22 @@ public class UIKitGradientTest extends GWTTestCase {
 
 	@Override
 	protected void gwtSetUp() throws Exception {
-		UIKit.init(UIKit.STYLE.GRADIENT);
+
 	}
 	@Override
 	protected void gwtTearDown() throws Exception {
 	}
 
 	public void testGetVersion(){
+		JQuery jquery = GWT.create(JQuery.class);
+		jquery.load();
+		UIKit.init(UIKit.STYLE.GRADIENT);
 		assertEquals("2.16.2", UIKit.getVersion());
 	}
 
 	public void testComponentsFormPassword(){
+		JQuery jquery = GWT.create(JQuery.class);
+		jquery.load();
 		UIKit.init(UIKit.STYLE.GRADIENT);
 		Components.injectFormPassword();
 	}
