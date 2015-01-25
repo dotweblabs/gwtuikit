@@ -3,7 +3,7 @@
 
 	<groupId>com.getuikit.gwt</groupId>
 	<artifactId>gwtuikit</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2.16.2-SNAPSHOT</version>
 
 	<name>UIKit GWT integration</name>
 	<description>A Simple integration of UIKit assets into GWT</description>
