@@ -29,6 +29,7 @@ import com.google.gwt.dom.client.StyleInjector;
 public class UIKit {
 
     private static boolean componentNotifyInjected = false;
+    private static boolean componentFormPasswordInjected = false;
 
     public static enum STATUS {INFO("info"), SUCCESS("success"), WARNING("warning"), DANGER("danger");
         private String status = null;
@@ -63,6 +64,13 @@ public class UIKit {
     public static native String uikitVersion()/*-{
         return $wnd.UIkit.version;
     }-*/;
+
+    public static void injectFormPassword(){
+        if(!componentFormPasswordInjected){
+            CssHelper.loadCss(GWT.getModuleBaseURL() + "css/components/form-password.almost-flat.css");
+            ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "js/components/form-password.js").setWindow(ScriptInjector.TOP_WINDOW).inject();
+        }
+    }
 
     public static void notification(final String message, final STATUS status, final int timeout, final POSITION pos){
         if(!componentNotifyInjected){
