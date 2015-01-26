@@ -19,14 +19,15 @@ public class ComponentsTest extends GWTTestCase {
     }
 
     public void testNotifyComponent(){
-        ScriptInjector.fromUrl("js/jquery-2.1.3.min.js").setCallback(new Callback<Void, Exception>() {
+        String moduleBase = GWT.getModuleBaseURL();
+        ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "js/jquery-2.1.3.min.js").setCallback(new Callback<Void, Exception>() {
             @Override
             public void onFailure(Exception e) {
                 fail();
             }
             @Override
             public void onSuccess(Void aVoid) {
-                ScriptInjector.fromUrl("js/uikit.js").setCallback(new Callback<Void, Exception>() {
+                ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "js/uikit.js").setCallback(new Callback<Void, Exception>() {
                     @Override
                     public void onFailure(Exception e) {
                         fail();
