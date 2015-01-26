@@ -17,7 +17,9 @@
 package com.getuikit.gwt.client;
 
 
+import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -42,14 +44,25 @@ public class UIKitAlmostFlatTest extends GWTTestCase {
 	}
 
 	public void testGetVersion(){
-		JQuery jquery = GWT.create(JQuery.class);
-		jquery.load();
-		assertEquals("2.16.2", UIKit.getVersion());
-	}
-
-	public void testComponentsFormPassword(){
-		JQuery jquery = GWT.create(JQuery.class);
-		jquery.load();
+		ScriptInjector.fromUrl("js/jquery-2.1.3.min.js").setCallback(new Callback<Void, Exception>() {
+			@Override
+			public void onFailure(Exception e) {
+				fail();
+			}
+			@Override
+			public void onSuccess(Void aVoid) {
+				ScriptInjector.fromUrl("js/uikit.js").setCallback(new Callback<Void, Exception>() {
+					@Override
+					public void onFailure(Exception e) {
+						fail();
+					}
+					@Override
+					public void onSuccess(Void aVoid) {
+						assertEquals("2.16.2", UIKit.getVersion());
+					}
+				}).setWindow(ScriptInjector.TOP_WINDOW).inject();
+			}
+		}).setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
 
 }
