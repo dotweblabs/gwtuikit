@@ -35,17 +35,7 @@ public class ComponentsTest extends GWTTestCase {
                     }
                     @Override
                     public void onSuccess(Void aVoid) {
-                        CssHelper.loadCss(GWT.getModuleBaseURL() + "css/components/notify.almost-flat.css");
-                        ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "js/components/notify.js").setCallback(new Callback<Void, Exception>() {
-                            @Override
-                            public void onFailure(Exception e) {
-                                GWT.log("Error injecting UIKit Notification JS");
-                            }
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                UIKit.notification("test", UIKit.STATUS.SUCCESS, 1, UIKit.POSITION.TOP_RIGHT);
-                            }
-                        }).setWindow(ScriptInjector.TOP_WINDOW).inject();
+                        UIKit.notification("test", UIKit.STATUS.SUCCESS, 1, UIKit.POSITION.TOP_RIGHT);
                     }
                 }).setWindow(ScriptInjector.TOP_WINDOW).inject();
             }
