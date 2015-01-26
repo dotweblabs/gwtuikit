@@ -16,6 +16,8 @@
  */
 package com.getuikit.gwt.client;
 
+import com.getuikit.gwt.client.util.CssHelper;
+import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.StyleInjector;
@@ -25,6 +27,8 @@ import com.google.gwt.dom.client.StyleInjector;
  * @author Kerby Martino <email>kerbymart@gmail.com</email>
  */
 public class UIKit {
+
+    private static boolean componentNotifyInjected = false;
 
     public static enum STATUS {INFO("info"), SUCCESS("success"), WARNING("warning"), DANGER("danger");
         private String status = null;
@@ -60,8 +64,22 @@ public class UIKit {
         return $wnd.UIkit.version;
     }-*/;
 
-    public static void notification(String message, STATUS status, int timeout, POSITION pos){
-        _notify(message, status.toString(), timeout, pos.toString());
+    public static void notification(final String message, final STATUS status, final int timeout, final POSITION pos){
+        if(!componentNotifyInjected){
+            CssHelper.loadCss("css/components/notify.almost-flat.css");
+            ScriptInjector.fromUrl("js/components/notify.js").setCallback(new Callback<Void, Exception>() {
+                @Override
+                public void onFailure(Exception e) {
+                    GWT.log("Error injecting UIKit Notification JS");
+                }
+                @Override
+                public void onSuccess(Void aVoid) {
+                    _notify(message, status.toString(), timeout, pos.toString());
+                }
+            }).setWindow(ScriptInjector.TOP_WINDOW).inject();
+        } else {
+            _notify(message, status.toString(), timeout, pos.toString());
+        }
     }
 
     private static native void _notify(String _message, String _status, int _timeout, String _pos)/*-{
