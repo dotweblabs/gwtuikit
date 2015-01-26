@@ -5,7 +5,7 @@
 	<artifactId>uikit-almost-flat</artifactId>
 	<version>2.16.2-SNAPSHOT</version>
 
-	<name>UIKit GWT integration</name>
+	<name>UIKit GWT Almost Flat</name>
 	<description>A Simple integration of UIKit assets into GWT</description>
 	<url>http://www.github.com/kerbymart/gwtuikit</url>
 
