@@ -1,6 +1,5 @@
 package com.getuikit.gwt.client.css;
 
-import com.getuikit.gwt.client.JQuery;
 import com.getuikit.gwt.client.util.CssHelper;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;

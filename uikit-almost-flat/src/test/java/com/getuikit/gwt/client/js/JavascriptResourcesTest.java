@@ -1,6 +1,5 @@
 package com.getuikit.gwt.client.js;
 
-import com.getuikit.gwt.client.JQuery;
 import com.getuikit.gwt.client.UIKit;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
