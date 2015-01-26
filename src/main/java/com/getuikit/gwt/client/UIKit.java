@@ -61,7 +61,7 @@ public class UIKit {
     }-*/;
 
     public static void notification(String message, STATUS status, int timeout, POSITION pos){
-        _notify(message, status.name(), timeout, pos.name());
+        _notify(message, status.toString(), timeout, pos.toString());
     }
 
     private static native void _notify(String _message, String _status, int _timeout, String _pos)/*-{
