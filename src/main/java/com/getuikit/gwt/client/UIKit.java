@@ -65,21 +65,7 @@ public class UIKit {
     }-*/;
 
     public static void notification(final String message, final STATUS status, final int timeout, final POSITION pos){
-        if(!componentNotifyInjected){
-            CssHelper.loadCss(GWT.getModuleBaseURL() + "css/components/notify.almost-flat.css");
-            ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "js/components/notify.js").setCallback(new Callback<Void, Exception>() {
-                @Override
-                public void onFailure(Exception e) {
-                    GWT.log("Error injecting UIKit Notification JS");
-                }
-                @Override
-                public void onSuccess(Void aVoid) {
-                    _notify(message, status.toString(), timeout, pos.toString());
-                }
-            }).setWindow(ScriptInjector.TOP_WINDOW).inject();
-        } else {
-            _notify(message, status.toString(), timeout, pos.toString());
-        }
+        _notify(message, status.toString(), timeout, pos.toString());
     }
 
     private static native void _notify(String _message, String _status, int _timeout, String _pos)/*-{
