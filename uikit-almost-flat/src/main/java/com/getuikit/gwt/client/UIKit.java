@@ -20,6 +20,7 @@ import com.getuikit.gwt.client.util.CssHelper;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.StyleInjector;
 
 /**
@@ -30,6 +31,7 @@ public class UIKit {
 
     private static boolean componentNotifyInjected = false;
     private static boolean componentFormPasswordInjected = false;
+    private static boolean componentStickyInjected = false;
 
     public static enum STATUS {INFO("info"), SUCCESS("success"), WARNING("warning"), DANGER("danger");
         private String status = null;
@@ -71,6 +73,29 @@ public class UIKit {
             ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "js/components/form-password.js").setWindow(ScriptInjector.TOP_WINDOW).inject();
         }
     }
+
+    public static void sticky(final Element el){
+        if(!componentStickyInjected){
+            ScriptInjector.fromUrl(GWT.getModuleBaseURL() + "js/components/sticky.js")
+                    .setCallback(new Callback<Void, Exception>() {
+                        @Override
+                        public void onFailure(Exception e) {
+                            GWT.log("Error while trying to inject UIKit sticky.js");
+                        }
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            _sticky(el);
+                        }
+                    })
+                    .setWindow(ScriptInjector.TOP_WINDOW).inject();
+        } else {
+            _sticky(el);
+        }
+    }
+
+    private static native void _sticky(Element el)/*-{
+            var sticky = $wnd.UIkit.sticky(element);
+    }-*/;
 
     public static void notification(final String message, final STATUS status, final int timeout, final POSITION pos){
         if(!componentNotifyInjected){
