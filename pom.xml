@@ -2,12 +2,19 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.getuikit.gwt</groupId>
-	<artifactId>gwtuikit</artifactId>
+	<artifactId>uikit</artifactId>
 	<version>2.16.2-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-	<name>UIKit GWT integration</name>
+	<name>UIKit GWT Parent</name>
 	<description>A Simple integration of UIKit assets into GWT</description>
 	<url>http://www.github.com/kerbymart/gwtuikit</url>
+
+    	<modules>
+        	<module>uikit-basic</module>
+        	<module>uikit-almost-flat</module>
+        	<module>uikit-gradient</module>
+    	</modules>
 
 	<issueManagement>
 		<url>https://github.com/kerbymart/gwtuikit/issues</url>
@@ -16,8 +23,8 @@
 
 	<licenses>
 		<license>
-			<name>MIT License</name>
-			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<name>Apache 2.0</name>
+			<url>http://opensource.org/licenses/Apache-2.0</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -80,134 +87,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<version>${gwt.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.gwtquery</groupId>
-			<artifactId>gwtquery</artifactId>
-			<version>1.4.2</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.2</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<profiles>
-		<profile>
-			<id>jar</id>
-			<build>
-				<resources>
-					<resource>
-						<directory>src/main/java</directory>
-						<includes>
-							<include>**/*.java</include>
-							<include>**/*.properties</include>
-							<include>**/*.gwt.xml</include>
-							<include>**/*.css</include>
-							<include>**/*.js</include>
-							<include>**/*.otf</include>
-							<include>**/*.eot</include>
-							<include>**/*.ttf</include>
-							<include>**/*.woff</include>
-						</includes>
-					</resource>
-					<resource>
-						<directory>src/main/resources</directory>
-						<includes>
-							<include>**/*.properties</include>
-						</includes>
-					</resource>
-				</resources>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<configuration>
-							<source>1.7</source>
-							<target>1.7</target>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>gwt-maven-plugin</artifactId>
-						<version>2.7.0</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>resources</goal>
-									<goal>test</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<excludes>
-								<exclude>**/*GwtTest*.java</exclude>
-								<exclude>**/*Gwt*Suite*.java</exclude>
-							</excludes>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
-						<configuration>
-							<archive>
-								<manifest>
-									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-								</manifest>
-							</archive>
-						</configuration>
-					</plugin>
-					<!--plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin-->
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 </project>
