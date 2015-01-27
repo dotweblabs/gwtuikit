@@ -67,11 +67,13 @@ public class FormPasswordTextBox extends TextBoxBase {
     }
 
     public void setWidth(Width sizing){
-        throw new RuntimeException("Not yet implemented");
+        input.addClassName(sizing.toString());
     }
 
-    public void setWidth(Width... sizing){
-        throw new RuntimeException("Not yet implemented");
+    public void setWidth(Width... sizings){
+        for(Width w : sizings){
+            input.addClassName(w.toString());
+        }
     }
 
 }
